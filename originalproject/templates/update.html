@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ユーザー更新{% endblock title %}
+
+{% block h1 %}updateview{% endblock h1 %}
+{% block content %}
+    <!-- <form action="{% url 'list' %}" method="post"> -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}<!--form.as_pの原型はCustomUser-->
+        <button type="submit" class="btn btn-success">更新する</button>
+            
+    </form>
+{% endblock content %}

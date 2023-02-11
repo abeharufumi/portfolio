@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}詳細ページ{% endblock title %}
+{% block h1 %}detailview{% endblock h1 %}
+{% block content %}
+
+    <h1>{{object.username}}の詳細ページ</h1>
+    <p>アカウント作成日：{{object.date_joined}}</p>
+    <p>ユーザーID：{{object.id}}</p>
+    <p>アドレス：{{object.email}}</p>
+    <p>電話番号：{{object.phoneNumber}}</p>
+    <p>契約状況：{{object.get_statas_display}}</p>
+    <p>アカウントメモ：{{object.memo}}</p>
+    {% if object.file_name %}
+    <p>ULファイル：<a class="btn btn-success" href="{{user.document.url }}">{{object.file_name}}</a></p>
+    {% endif %}
+    <a class="btn btn-success" href="{% url 'update' user.pk %}">情報を更新する</a>
+    <a class="btn btn-success" href="{% url 'user' %}">戻る</a>
+    {% if request.user.is_superuser %}
+        <a class="btn btn-success" href="{% url 'list' %}">一覧を表示する</a>
+    {% endif %}
+    <a class="btn btn-dark" href="{% url 'logout' %}">ログアウト</a>
+
+
+{% endblock content %}

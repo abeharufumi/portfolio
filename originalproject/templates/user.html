@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}ユーザー情報{% endblock title %}
+{% block h1 %}{{user.username}}ユーザー情報{% endblock h1 %}
+{% block content %}
+<!-- <body> -->
+       
+    <a class="btn btn-success" href="{% url 'update' user.pk %}">更新・編集</a>
+    <a class="btn btn-success" href="{% url 'detail' user.pk %}">詳細表示</a>
+    {% if request.user.is_superuser %}
+        <a class="btn btn-success" href="{% url 'list' %}">一覧を表示</a>
+    {% endif %}
+    <a class="btn btn-dark" href="{% url 'logout' %}">ログアウト</a>
+<!-- </body> -->
+{% endblock content %}
+

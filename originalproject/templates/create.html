@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}ユーザー登録{% endblock title %}
+{% block h1 %}createview{% endblock h1 %}
+{% block content %}
+    <!-- <form action="{% url 'list' %}" method="post"> -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }} <!--form.as_pの原型はCustomUser-->
+         <button type="submit">アカウント登録</button>
+            
+    </form>
+{% endblock content %}

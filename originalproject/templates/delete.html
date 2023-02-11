@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ユーザー削除{% endblock title %}
+
+{% block h1 %}signupview{% endblock h1 %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">アカウント削除</button>       
+    </form>
+{% endblock content %}

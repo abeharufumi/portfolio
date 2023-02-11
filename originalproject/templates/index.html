@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <ul>
+    <li><a href="{% url 'basic' %}">Basic</a></li>
+  </ul>
+  <ul>
+    <li><a href="">ModelForm</a></li>
+  </ul>
+
+  <p>保存済みファイル：</p>
+  <ul>
+    {% for obj in documents %}
+    <li>
+      <!-- ここのdocumentはmodels.Modelのdocumentだな -->
+      <a href="{{ obj.url }}"></a>
+      <small></small>
+    </li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

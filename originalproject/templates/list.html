@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block h1 %}listview{% endblock h1 %}
+{% block content %}
+
+<form class="d-flex mb-3" action="{% url 'list' %}" method="get">
+  <input name="q" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-primary" type="submit">Search</button>
+</form>
+
+<a href="{% url 'signup' %}" class="btn btn-primary mb-3">顧客を追加</a> <!--基本ここでは作成しない-->
+<table class="table table-borderd">
+  <thead>
+    <tr class="table-primary">
+      <th>顧客名</th>
+      <th>メール</th>
+      <th>電話</th>
+      <th>契約状況</th>
+      <th>画像１</th>
+      <th>詳細を見る</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for object in object_list %}
+    <tr>
+      <!-- <td>{{ object.pk }}</td> -->
+      <td>{{ object.username }}</td>
+      <td>{{ object.email }}</td>
+      <td>{{ object.phoneNumber }}</td>
+      <td>{{ object.get_statas_display }}</td>
+      {% if not object.document.empty %}
+      <td><a href="{{ object.document.url }}">{{ object.document }}</a></td>
+      {% endif %}
+      <td><a href="{% url 'detail' object.id %}" class="btn btn-outline-primary">詳細</a></td>
+      {% if request.user.is_superuser %}
+        <td><a class="btn btn-success" href="{% url 'delete' object.pk %}">削除</a></td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a class="btn btn-dark" href="{% url 'logout' %}">ログアウト</a>
+{% endblock content %}
