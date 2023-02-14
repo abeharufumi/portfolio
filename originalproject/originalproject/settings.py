@@ -77,7 +77,17 @@ WSGI_APPLICATION = 'originalproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR / 'originalproject_database'),
+        'USER': 'python03objsap',
+        'PASSWORD': '',
+        'HOST': 'python03objsap.mysql.pythonanywhere-services.com',
+        'PORT': '',
+
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': '<your_username>$<your_database_name>',
+        # 'USER': '<your_username>',
+        # 'PASSWORD': '<your_mysql_password>',
+        # 'HOST': '<your_mysql_hostname>',
     }
 }
 
@@ -135,3 +145,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #サーバから見たメディア�
 
 # 認証に利用するユーザー管理モデルをmodels.pyで作成した CustomUser に設定する。Django で開発するアプリにおいては、デフォルト設定では認証時に User モデルを使用することが前提となっています。ですので、せっかくカスタムユーザーを作成したとしても、デフォルト設定のままだと認証に User モデルが利用されることになって意味がありません。そのため、カスタムユーザーを定義した際には、認証に使用するユーザー管理モデルとしてカスタムユーザーを設定してやる必要があります。
 AUTH_USER_MODEL = 'originalapp.CustomUser'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+ALLOWED_HOSTS = ['localhost', '.pythonanywhere.com']
