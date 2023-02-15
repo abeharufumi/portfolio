@@ -78,6 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'originalproject_database',
+        
         'USER': 'python03objsap',
         'PASSWORD': '',
         'HOST': 'python03objsap.mysql.pythonanywhere-services.com',
