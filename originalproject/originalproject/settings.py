@@ -77,8 +77,9 @@ WSGI_APPLICATION = 'originalproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'originalproject_database',
-        
+        # NAMEの変更
+        'NAME': 'originalproject_database', 
+
         'USER': 'python03objsap',
         'PASSWORD': '',
         'HOST': 'python03objsap.mysql.pythonanywhere-services.com',
